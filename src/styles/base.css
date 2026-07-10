@@ -2321,3 +2321,233 @@ button {
     max-height: calc(100dvw - 24px);
   }
 }
+
+/* ===== mobile monitor as a compact top header ===== */
+@media (max-width: 760px) {
+  .game-root {
+    width: 100%;
+    height: 100%;
+    transform: none;
+    transform-origin: initial;
+  }
+
+  .right-rail {
+    left: 8px;
+    right: 8px;
+    top: 112px;
+    width: auto;
+    transform: none;
+    transform-origin: initial;
+    gap: 6px;
+  }
+
+  .monitor {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "head foot"
+      "data data"
+      "status status";
+    gap: 7px 8px;
+    padding: 8px 10px;
+    max-height: none;
+    overflow: visible;
+    border-radius: 16px;
+  }
+  .monitor-head {
+    grid-area: head;
+    justify-content: flex-start;
+    gap: 8px;
+    border-bottom: 0;
+    padding-bottom: 0;
+    min-width: 0;
+  }
+  .monitor-title {
+    font-size: 0.76rem;
+    letter-spacing: 1.4px;
+    white-space: nowrap;
+  }
+  .day-chip {
+    font-size: 0.66rem;
+    padding: 2px 8px;
+  }
+  .monitor-dot {
+    width: 9px;
+    height: 9px;
+    margin-left: 2px;
+  }
+  .monitor-body {
+    grid-area: data;
+    display: block;
+    padding: 0;
+  }
+  .radar {
+    display: none;
+  }
+  .monitor-data {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+  }
+  .mrow {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    align-items: start;
+    padding: 5px 7px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.055);
+    font-size: 0.66rem;
+  }
+  .mrow:first-child {
+    grid-column: span 2;
+  }
+  .mrow-hot {
+    margin: 0;
+    padding: 5px 7px;
+  }
+  .mlabel {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.1;
+  }
+  .mvalue {
+    margin-top: 2px;
+    max-width: 100%;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.15;
+  }
+  .monitor-status {
+    grid-area: status;
+    margin: 0;
+    padding: 4px 8px;
+    font-size: 0.72rem;
+    border-radius: 10px;
+  }
+  .monitor-foot {
+    grid-area: foot;
+    justify-content: flex-end;
+    align-self: start;
+    gap: 0;
+  }
+  .monitor-src {
+    display: none;
+  }
+  .btn-mini {
+    padding: 5px 10px;
+    font-size: 0.68rem;
+    border-radius: 10px;
+  }
+
+  .daily-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 8px;
+    padding: 7px 10px;
+    border-radius: 14px;
+  }
+  .daily-task,
+  .daily-reward,
+  .daily-claimed {
+    display: none;
+  }
+  .daily-progress-row,
+  .btn-claim {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 430px) {
+  .right-rail {
+    left: 6px;
+    right: 6px;
+    top: 104px;
+  }
+  .monitor {
+    padding: 7px 8px;
+    gap: 6px;
+  }
+  .monitor-title {
+    font-size: 0.68rem;
+    letter-spacing: 1px;
+  }
+  .day-chip {
+    font-size: 0.6rem;
+    padding: 1px 6px;
+  }
+  .monitor-data {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+  }
+  .mrow {
+    padding: 4px 5px;
+    font-size: 0.58rem;
+  }
+  .mrow:first-child {
+    grid-column: span 3;
+  }
+  .monitor-status {
+    font-size: 0.64rem;
+    padding: 3px 7px;
+  }
+  .btn-mini {
+    padding: 4px 8px;
+    font-size: 0.62rem;
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1024px) {
+  .right-rail {
+    left: 12px;
+    right: 12px;
+    top: 84px;
+    width: auto;
+    transform: none;
+  }
+  .monitor {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 10px;
+  }
+  .monitor-head {
+    border-bottom: 0;
+    padding-bottom: 0;
+    gap: 8px;
+  }
+  .monitor-body {
+    padding: 0;
+  }
+  .radar {
+    width: 46px;
+    height: 46px;
+  }
+  .monitor-data {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .mrow {
+    display: block;
+    font-size: 0.62rem;
+    padding: 5px 6px;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.055);
+  }
+  .mvalue {
+    display: block;
+    margin-top: 1px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .monitor-status,
+  .monitor-foot {
+    display: none;
+  }
+}

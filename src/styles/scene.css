@@ -1094,3 +1094,34 @@
     height: 88px;
   }
 }
+
+/* Back to normal portrait: monitor is compact now, no rotated canvas needed. */
+@media (max-width: 760px) and (orientation: portrait) {
+  .farm-area {
+    transform: translateX(-50%) scale(0.44);
+    bottom: 52px;
+  }
+  .sun {
+    top: 138px;
+    left: 10px;
+    scale: 0.62;
+  }
+  .buddy {
+    bottom: calc(102px + env(safe-area-inset-bottom));
+  }
+  .buddy-bot-wrap {
+    width: 58px;
+  }
+}
+
+@media (max-width: 430px) and (orientation: portrait) {
+  .farm-area {
+    transform: translateX(-50%) scale(0.4);
+    bottom: 44px;
+  }
+  .sun {
+    top: 132px;
+    left: 4px;
+    scale: 0.56;
+  }
+}
