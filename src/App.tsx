@@ -47,7 +47,7 @@ function Game() {
 
   return (
     <div className={`game-root weather-${state.weather} ${shaking ? 'screen-shake' : ''}`}>
-      <FarmScene />
+      <FarmScene onOpenShop={() => setShopOpen(true)} />
       <TopBar onOpenShop={() => setShopOpen(true)} />
       <div className="right-rail">
         <EarthMonitor />

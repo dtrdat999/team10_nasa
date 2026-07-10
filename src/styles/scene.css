@@ -204,6 +204,22 @@
   position: absolute;
   pointer-events: none;
 }
+.prop-action {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  pointer-events: auto;
+  cursor: pointer;
+  transform-origin: 50% 90%;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.prop-action:hover {
+  filter: brightness(1.08) drop-shadow(0 8px 10px rgba(65, 38, 16, 0.22));
+  transform: translateY(-3px) scale(1.04);
+}
+.prop-action:active {
+  transform: translateY(0) scale(0.98);
+}
 .prop-svg {
   width: 100%;
   height: auto;

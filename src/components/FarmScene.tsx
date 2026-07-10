@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useGame } from '../game/GameContext';
 import { Plot } from './Plot';
 import { Barn, Crate, Fence, House, Pumpkin, Tree } from './Buildings';
+import { sound } from '../utils/sound';
 
 /** Pre-computed random particles so the layers render once. */
 const DROPS = Array.from({ length: 54 }, (_, i) => ({
@@ -32,7 +33,7 @@ const DUST = Array.from({ length: 26 }, () => ({
   dur: 5 + Math.random() * 6,
 }));
 
-export function FarmScene() {
+export function FarmScene({ onOpenShop }: { onOpenShop: () => void }) {
   const { state } = useGame();
   const [now, setNow] = useState(Date.now());
 
@@ -79,9 +80,17 @@ export function FarmScene() {
         <div className="prop prop-house">
           <House />
         </div>
-        <div className="prop prop-barn">
+        <button
+          className="prop prop-barn prop-action"
+          aria-label="Mở kho nông trại"
+          title="Mở kho / Shop"
+          onClick={() => {
+            sound.click();
+            onOpenShop();
+          }}
+        >
           <Barn />
-        </div>
+        </button>
         <div className="prop prop-tree1">
           <Tree variant={0} />
         </div>
