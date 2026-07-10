@@ -1125,3 +1125,285 @@
     scale: 0.56;
   }
 }
+
+/* ===== top-down farm map pass ===== */
+.ground {
+  background:
+    linear-gradient(90deg, rgba(222, 174, 84, 0.24) 0 10px, transparent 10px 116px),
+    linear-gradient(0deg, rgba(222, 174, 84, 0.2) 0 8px, transparent 8px 106px),
+    radial-gradient(34px 18px at 16% 68%, rgba(92, 157, 54, 0.45), transparent 70%),
+    radial-gradient(44px 20px at 72% 54%, rgba(92, 157, 54, 0.36), transparent 70%),
+    radial-gradient(22px 14px at 88% 72%, rgba(255, 230, 130, 0.42), transparent 70%),
+    linear-gradient(#9fd66a 0%, #85c44e 100%);
+}
+
+.farm-area {
+  width: 720px;
+  height: 400px;
+  bottom: 44px;
+}
+.farm-area::before {
+  content: '';
+  position: absolute;
+  inset: 20px 8px 12px;
+  z-index: 1;
+  border-radius: 34px;
+  background:
+    linear-gradient(90deg, transparent 0 326px, rgba(221, 169, 78, 0.92) 326px 370px, transparent 370px),
+    linear-gradient(0deg, transparent 0 176px, rgba(221, 169, 78, 0.9) 176px 214px, transparent 214px),
+    radial-gradient(120px 48px at 16% 84%, rgba(62, 145, 54, 0.22), transparent 72%),
+    radial-gradient(95px 38px at 88% 28%, rgba(62, 145, 54, 0.2), transparent 72%);
+  pointer-events: none;
+}
+.farm-area::after {
+  content: '';
+  position: absolute;
+  inset: 12px 4px 8px;
+  z-index: 0;
+  border-radius: 36px;
+  background:
+    radial-gradient(8px 7px at 10% 18%, #61b945 45%, transparent 48%),
+    radial-gradient(7px 6px at 92% 76%, #61b945 45%, transparent 48%),
+    radial-gradient(6px 5px at 74% 12%, #d7a34d 45%, transparent 50%),
+    rgba(113, 187, 75, 0.26);
+  pointer-events: none;
+}
+.field {
+  left: 0;
+  top: 0;
+  width: 720px;
+  height: 400px;
+  z-index: 4;
+}
+.plot-slot {
+  width: 178px;
+  height: 106px;
+}
+.plot {
+  width: 178px;
+  height: 106px;
+}
+.plot-tile {
+  border-radius: 10px;
+  border: 0;
+  background:
+    repeating-linear-gradient(0deg, rgba(88, 48, 21, 0.45) 0 6px, transparent 6px 23px),
+    linear-gradient(#8f552b, #6f3f1e);
+  box-shadow:
+    inset 0 0 0 3px rgba(80, 42, 18, 0.42),
+    inset 0 5px 0 rgba(181, 113, 57, 0.55),
+    0 4px 0 rgba(95, 61, 28, 0.32);
+}
+.plot-tile::after {
+  inset: 8px;
+  border-radius: 6px;
+  background:
+    linear-gradient(90deg, transparent 0 45px, rgba(218, 169, 86, 0.32) 45px 50px, transparent 50px 100px),
+    repeating-linear-gradient(0deg, rgba(48, 25, 10, 0.24) 0 5px, transparent 5px 22px);
+}
+.planted-tile {
+  background:
+    repeating-linear-gradient(0deg, rgba(70, 36, 15, 0.48) 0 7px, transparent 7px 22px),
+    linear-gradient(#845029, #633818);
+}
+.locked-tile {
+  background:
+    repeating-linear-gradient(0deg, rgba(40, 34, 25, 0.2) 0 7px, transparent 7px 22px),
+    linear-gradient(#7b776d, #5f5a50);
+}
+.plant-plus {
+  font-size: 0.72rem;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.crop-patch {
+  left: 50%;
+  top: 50%;
+  width: 142px;
+  height: 78px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  place-items: center;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.crop-sprite {
+  position: relative;
+  width: 28px;
+  height: 24px;
+  display: block;
+  opacity: 0;
+  transform: scale(0.55);
+}
+.crop-stage-1 .crop-sprite:nth-child(-n + 4),
+.crop-stage-2 .crop-sprite:nth-child(-n + 6),
+.crop-stage-3 .crop-sprite:nth-child(-n + 8),
+.crop-stage-4 .crop-sprite {
+  opacity: 1;
+  transform: scale(1);
+}
+.crop-leaves,
+.crop-leaves::before,
+.crop-leaves::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px 999px 999px 4px;
+  background: linear-gradient(#64c94d, #2f8838);
+  border: 1px solid rgba(28, 93, 36, 0.45);
+}
+.crop-leaves {
+  left: 8px;
+  top: 7px;
+  width: 13px;
+  height: 17px;
+  transform: rotate(35deg);
+}
+.crop-leaves::before {
+  left: -8px;
+  top: 3px;
+  width: 13px;
+  height: 16px;
+  transform: rotate(-76deg);
+}
+.crop-leaves::after {
+  left: 4px;
+  top: -6px;
+  width: 12px;
+  height: 15px;
+  transform: rotate(38deg);
+}
+.crop-fruit {
+  position: absolute;
+  left: 10px;
+  top: 14px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 1px 0 rgba(67, 35, 15, 0.35);
+}
+.crop-tomato.crop-stage-3 .crop-fruit,
+.crop-tomato.crop-stage-4 .crop-fruit {
+  opacity: 1;
+  background: radial-gradient(circle at 32% 30%, #ffb08c 0 18%, #e94634 22% 100%);
+}
+.crop-carrot.crop-stage-3 .crop-fruit,
+.crop-carrot.crop-stage-4 .crop-fruit {
+  opacity: 1;
+  width: 8px;
+  height: 12px;
+  border-radius: 50% 50% 70% 70%;
+  background: linear-gradient(#ffb24d, #e26d25);
+}
+.crop-stage-0 .crop-sprite:nth-child(-n + 3) {
+  opacity: 1;
+  transform: scale(0.42);
+}
+.crop-stage-0 .crop-leaves {
+  filter: saturate(0.7);
+}
+.droopy.crop-patch {
+  filter: saturate(0.55) brightness(0.82);
+}
+
+.prop-house {
+  width: 104px;
+  left: 34px;
+  top: 84px;
+  z-index: 5;
+  transform: rotate(-1deg);
+}
+.prop-barn {
+  width: 106px;
+  right: 28px;
+  top: 106px;
+  z-index: 5;
+}
+.prop-tree1 {
+  width: 58px;
+  left: 18px;
+  top: 236px;
+  z-index: 6;
+}
+.prop-tree2 {
+  width: 54px;
+  right: 16px;
+  top: 248px;
+  z-index: 6;
+}
+.prop-tree3 {
+  width: 46px;
+  right: 134px;
+  top: 52px;
+  z-index: 3;
+}
+.prop-pumpkin {
+  width: 42px;
+  left: 126px;
+  top: 42px;
+  z-index: 6;
+}
+.prop-crate {
+  width: 44px;
+  right: 128px;
+  top: 48px;
+  z-index: 6;
+}
+.fence-row {
+  left: 18px;
+  right: 18px;
+  top: 314px;
+  height: 28px;
+  opacity: 0.8;
+  z-index: 2;
+}
+.plot-status {
+  bottom: -27px;
+}
+.grow-time {
+  font-size: 0.58rem;
+  padding: 1px 7px;
+}
+.grow-bar {
+  width: 82px;
+  height: 8px;
+}
+.btn-harvest {
+  top: -34px;
+  font-size: 0.72rem;
+  padding: 6px 12px;
+}
+.plot-roof {
+  top: -54px;
+  width: 160px;
+}
+
+@keyframes stagePop {
+  0% { transform: translate(-50%, -50%) scale(0.55); }
+  60% { transform: translate(-50%, -50%) scale(1.08); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes wiggle {
+  0%, 100% { transform: translate(-50%, -50%) rotate(0); }
+  25% { transform: translate(-50%, -50%) rotate(-3deg); }
+  50% { transform: translate(-50%, -50%) rotate(3deg); }
+  75% { transform: translate(-50%, -50%) rotate(-1.5deg); }
+}
+@keyframes droop {
+  0%, 100% { transform: translate(-50%, -50%) rotate(1deg) scale(0.98); }
+  50% { transform: translate(-50%, -50%) rotate(-1deg) scale(0.94); }
+}
+@keyframes heatSway {
+  0%, 100% { transform: translate(-50%, -50%) rotate(0.8deg) scale(0.99); }
+  50% { transform: translate(-50%, -50%) rotate(-0.8deg) scale(0.96); }
+}
+@keyframes rainSway {
+  0%, 100% { transform: translate(-50%, -50%) rotate(-1deg); }
+  50% { transform: translate(-50%, -50%) rotate(1deg); }
+}
+@keyframes readyBounce {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -54%) scale(1.05); }
+}

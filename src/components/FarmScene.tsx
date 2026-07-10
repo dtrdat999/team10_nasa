@@ -107,8 +107,8 @@ export function FarmScene() {
                 key={p.id}
                 className="plot-slot"
                 style={{
-                  left: 91 + col * 304,
-                  top: 16 + row * 172,
+                  left: 180 + col * 218,
+                  top: 54 + row * 130,
                 }}
               >
                 <Plot plot={p} now={now} />

@@ -4,13 +4,14 @@ import { CROPS, STAGE_NAMES } from '../data/crops';
 import { isHeatStressed, plantStage, UNLOCK_LAND_PRICE } from '../game/state';
 import { useGame } from '../game/GameContext';
 import { useFx } from './FxLayer';
-import { PlantArt } from './PlantArt';
 import { sound } from '../utils/sound';
 
 function fmtTime(seconds: number): string {
   const s = Math.max(0, Math.ceil(seconds));
   return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
 }
+
+const CROP_SPOTS = Array.from({ length: 9 }, (_, i) => i);
 
 export function Plot({ plot, now }: { plot: PlotState; now: number }) {
   const { state, dispatch } = useGame();
@@ -159,7 +160,7 @@ export function Plot({ plot, now }: { plot: PlotState; now: number }) {
       )}
       <div
         key={stagePop}
-        className={`plant-wrap stage-pop ${wiggle ? 'wiggle' : ''} ${recovering || stressed ? 'droopy' : ''}`}
+        className={`plant-wrap crop-patch crop-${plant.cropId} crop-stage-${stage} stage-pop ${wiggle ? 'wiggle' : ''} ${recovering || stressed ? 'droopy' : ''}`}
         onClick={() => {
           if (ready) {
             handleHarvest();
@@ -171,7 +172,12 @@ export function Plot({ plot, now }: { plot: PlotState; now: number }) {
         }}
         title={`${crop.name} — ${STAGE_NAMES[stage]}`}
       >
-        <PlantArt crop={plant.cropId} stage={stage} />
+        {CROP_SPOTS.map((i) => (
+          <span className="crop-sprite" key={i}>
+            <span className="crop-leaves" />
+            <span className="crop-fruit" />
+          </span>
+        ))}
       </div>
 
       {ready ? (
