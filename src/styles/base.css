@@ -2787,7 +2787,7 @@ button {
     font-size: 0.9rem;
     line-height: 1.42;
     color: var(--ink-soft);
-    margin-bottom: 16px;
+    margin-bottom: 0;
   }
   .phone-rotate {
     width: 92px;
