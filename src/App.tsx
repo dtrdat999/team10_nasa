@@ -12,6 +12,37 @@ import { Shop } from './components/Shop';
 import { DemoPanel } from './components/DemoPanel';
 import { sound } from './utils/sound';
 
+function OrientationGate() {
+  const requestLandscape = async () => {
+    try {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen();
+      }
+      const orientation = screen.orientation as ScreenOrientation & {
+        lock?: (orientation: 'landscape') => Promise<void>;
+      };
+      await orientation.lock?.('landscape');
+    } catch {
+      // Browsers may block orientation lock outside installed/fullscreen apps.
+    }
+  };
+
+  return (
+    <div className="orientation-gate" role="dialog" aria-label="Xoay ngang màn hình">
+      <div className="orientation-card">
+        <div className="phone-rotate" aria-hidden>
+          <span />
+        </div>
+        <h2>Xoay ngang để chơi tốt hơn</h2>
+        <p>Earth Farm là game bản đồ nông trại. Màn hình ngang giúp thấy rõ dữ liệu, luống cây và nhiệm vụ mà không bị chồng UI.</p>
+        <button className="btn btn-primary" onClick={requestLandscape}>
+          Thử xoay ngang
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function Game() {
   const { state, dispatch } = useGame();
   const [shopOpen, setShopOpen] = useState(false);
@@ -56,6 +87,7 @@ function Game() {
       <Buddy />
       <EventBanner />
       <MissionModal />
+      <OrientationGate />
       {shopOpen && <Shop onClose={() => setShopOpen(false)} />}
       {showNextDay && (
         <button

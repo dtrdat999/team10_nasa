@@ -1461,3 +1461,37 @@
     scale: 0.5;
   }
 }
+
+@media (max-width: 950px) and (max-height: 560px) and (orientation: landscape) {
+  .sun {
+    top: 66px;
+    left: 22px;
+    scale: 0.54;
+  }
+  .cloud.c1,
+  .cloud.c2,
+  .cloud.c3 {
+    opacity: 0.5;
+  }
+  .farm-area {
+    transform: translateX(-50%) scale(0.32);
+    transform-origin: bottom center;
+    bottom: 40px;
+  }
+  .boost-tag {
+    top: 140px;
+    font-size: 0.66rem;
+    padding: 3px 10px;
+  }
+}
+
+@media (max-width: 760px) and (max-height: 380px) and (orientation: landscape) {
+  .farm-area {
+    transform: translateX(-50%) scale(0.29);
+    bottom: 39px;
+  }
+  .sun {
+    top: 62px;
+    scale: 0.48;
+  }
+}
