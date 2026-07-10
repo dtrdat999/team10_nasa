@@ -1069,3 +1069,28 @@
     bottom: 0;
   }
 }
+
+/* Phone portrait is rendered as a rotated landscape canvas. */
+@media (max-width: 760px) and (orientation: portrait) {
+  .farm-area {
+    transform: translateX(-52%) scale(0.46);
+    bottom: 2px;
+  }
+  .sun {
+    top: 66px;
+    left: 18px;
+    scale: 0.58;
+  }
+  .rainbow {
+    scale: 0.55;
+  }
+  .buddy {
+    bottom: 8px;
+  }
+  .buddy-bot-wrap {
+    width: 62px;
+  }
+  .heatwave {
+    height: 88px;
+  }
+}
