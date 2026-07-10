@@ -1423,3 +1423,41 @@
   0%, 100% { transform: translate(-50%, -50%) scale(1); }
   50% { transform: translate(-50%, -54%) scale(1.05); }
 }
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .sun {
+    top: 68px;
+    left: 30px;
+    scale: 0.58;
+  }
+  .cloud.c1,
+  .cloud.c2,
+  .cloud.c3 {
+    opacity: 0.58;
+  }
+  .farm-area {
+    transform: translateX(-50%) scale(0.34);
+    transform-origin: bottom center;
+    bottom: 46px;
+  }
+  .boost-tag {
+    top: 146px;
+    font-size: 0.68rem;
+    padding: 3px 10px;
+  }
+  .puddles {
+    transform: scale(0.88);
+    transform-origin: bottom center;
+  }
+}
+
+@media (max-height: 360px) and (orientation: landscape) {
+  .farm-area {
+    transform: translateX(-50%) scale(0.3);
+    bottom: 44px;
+  }
+  .sun {
+    top: 64px;
+    scale: 0.5;
+  }
+}

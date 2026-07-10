@@ -2551,3 +2551,201 @@ button {
     display: none;
   }
 }
+
+/* Short landscape phones: height is the constraint, not width. */
+@media (max-height: 520px) and (orientation: landscape) {
+  .topbar {
+    top: max(5px, env(safe-area-inset-top));
+    left: 8px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 8px;
+    padding: 4px 8px;
+    border-radius: 14px;
+  }
+  .topbar-left {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+    border-width: 2px;
+  }
+  .player-name {
+    max-width: 22vw;
+    font-size: 0.78rem;
+    line-height: 1;
+  }
+  .player-level-row {
+    gap: 5px;
+  }
+  .level-badge {
+    font-size: 0.58rem;
+    padding: 1px 6px;
+    border-width: 1.5px;
+  }
+  .xp-bar {
+    width: 84px;
+    height: 8px;
+  }
+  .xp-text {
+    display: inline;
+    font-size: 0.58rem;
+  }
+  .topbar-right {
+    width: auto;
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+  .chip,
+  .chip-btn,
+  .btn-shop {
+    width: auto;
+    min-height: 30px;
+    justify-content: center;
+    font-size: 0.7rem;
+    padding: 3px 9px;
+  }
+  .chip-btn {
+    width: 34px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .btn-shop {
+    min-width: 82px;
+    font-size: 0.72rem;
+  }
+
+  .right-rail {
+    left: 10px;
+    right: 10px;
+    top: 58px;
+    width: auto;
+    transform: none;
+    gap: 0;
+  }
+  .monitor {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    border-width: 2px;
+    border-radius: 12px;
+    max-height: 54px;
+    overflow: hidden;
+  }
+  .monitor-head {
+    border-bottom: 0;
+    padding-bottom: 0;
+    gap: 6px;
+  }
+  .monitor-title {
+    font-size: 0.68rem;
+    letter-spacing: 1.4px;
+  }
+  .day-chip {
+    font-size: 0.58rem;
+    padding: 1px 6px;
+  }
+  .monitor-dot {
+    width: 8px;
+    height: 8px;
+  }
+  .monitor-body {
+    display: block;
+    padding: 0;
+    min-width: 0;
+  }
+  .radar {
+    display: none;
+  }
+  .monitor-data {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 5px;
+  }
+  .mrow {
+    display: block;
+    min-width: 0;
+    padding: 4px 6px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.055);
+    font-size: 0.55rem;
+  }
+  .mrow:first-child {
+    grid-column: auto;
+  }
+  .mlabel,
+  .mvalue {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.12;
+  }
+  .mvalue {
+    margin-top: 1px;
+  }
+  .monitor-status,
+  .monitor-foot,
+  .daily-card {
+    display: none;
+  }
+
+  .buddy {
+    left: 10px;
+    bottom: 12px;
+  }
+  .buddy-bubble {
+    display: none;
+  }
+  .buddy-bot-wrap,
+  .buddy-idle .buddy-bot-wrap {
+    width: 50px;
+  }
+  .btn-nextday {
+    left: auto;
+    right: 64px;
+    bottom: 9px;
+    width: 220px;
+    min-height: 34px;
+    transform: none;
+    padding: 7px 12px;
+    border-radius: 14px;
+    font-size: 0.78rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  @keyframes nextDayBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+  .demo-toggle {
+    right: 10px;
+    bottom: 10px;
+    width: 36px;
+    height: 36px;
+  }
+  .demo-panel {
+    right: 10px;
+    bottom: 52px;
+    width: 220px;
+  }
+  .event-banner {
+    top: 60px;
+    max-width: calc(100vw - 32px);
+    padding: 8px 14px;
+  }
+  .attribution {
+    display: none;
+  }
+}
