@@ -1752,3 +1752,368 @@ button {
     max-width: 250px;
   }
 }
+
+/* ===== responsive HUD pass: tablet + mobile ===== */
+@media (max-width: 900px) {
+  .topbar {
+    align-items: stretch;
+  }
+  .topbar-left {
+    min-width: 0;
+  }
+  .player-meta {
+    min-width: 0;
+  }
+  .player-name {
+    max-width: 34vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .topbar-right {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .right-rail {
+    width: min(300px, calc(100vw - 16px));
+    transform: none;
+    right: 8px;
+    top: 84px;
+  }
+  .monitor,
+  .daily-card {
+    border-width: 2.5px;
+  }
+  .event-banner {
+    top: 88px;
+    max-width: calc(100vw - 24px);
+  }
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    left: 8px;
+    right: 8px;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 7px 10px;
+  }
+  .topbar-left {
+    justify-content: flex-start;
+  }
+  .player-name {
+    max-width: calc(100vw - 110px);
+  }
+  .topbar-right {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 44px minmax(92px, auto);
+    gap: 6px;
+  }
+  .chip,
+  .chip-btn,
+  .btn-shop {
+    width: 100%;
+    min-height: 34px;
+    justify-content: center;
+  }
+  .chip-btn {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .right-rail {
+    left: 8px;
+    right: 8px;
+    top: 116px;
+    width: auto;
+    gap: 7px;
+  }
+  .monitor {
+    padding: 8px 10px;
+    border-radius: 15px;
+  }
+  .monitor-head {
+    padding-bottom: 4px;
+  }
+  .monitor-title {
+    font-size: 0.74rem;
+    letter-spacing: 1px;
+  }
+  .monitor-body {
+    gap: 8px;
+    padding: 6px 0;
+  }
+  .radar {
+    width: 52px;
+    height: 52px;
+  }
+  .mrow {
+    font-size: 0.68rem;
+    gap: 4px;
+  }
+  .monitor-status {
+    font-size: 0.72rem;
+    margin-bottom: 6px;
+    padding: 3px 8px;
+  }
+  .monitor-foot {
+    gap: 8px;
+  }
+  .monitor-src {
+    font-size: 0.58rem;
+  }
+  .daily-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 5px 8px;
+    padding: 7px 10px;
+    border-radius: 14px;
+  }
+  .daily-head {
+    font-size: 0.68rem;
+  }
+  .daily-task,
+  .daily-reward,
+  .daily-claimed {
+    display: none;
+  }
+  .daily-progress-row {
+    grid-column: 1 / -1;
+  }
+  .btn-claim {
+    grid-column: 1 / -1;
+    margin-top: 2px;
+    padding: 6px 8px;
+    font-size: 0.78rem;
+  }
+  .event-banner {
+    top: 118px;
+  }
+}
+
+@media (max-width: 640px) {
+  html,
+  body,
+  #root {
+    min-width: 0;
+  }
+  .topbar {
+    box-shadow:
+      inset 0 2px 0 rgba(255, 240, 210, 0.55),
+      inset 0 -3px 0 rgba(120, 80, 40, 0.22),
+      0 4px 0 rgba(78, 50, 24, 0.35),
+      0 8px 18px rgba(60, 40, 15, 0.2);
+  }
+  .topbar-right {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 38px minmax(84px, 1.05fr);
+  }
+  .chip {
+    min-width: 0;
+    font-size: 0.74rem;
+    padding: 3px 6px;
+  }
+  .chip-icon {
+    flex-shrink: 0;
+  }
+  .btn-shop {
+    font-size: 0.78rem;
+    padding: 5px 8px;
+  }
+  .right-rail {
+    top: 108px;
+  }
+  .monitor {
+    max-height: 216px;
+    overflow: hidden;
+  }
+  .monitor-body {
+    align-items: start;
+  }
+  .mlabel {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .mvalue {
+    white-space: nowrap;
+  }
+  .buddy {
+    left: 10px;
+    right: 10px;
+    bottom: calc(106px + env(safe-area-inset-bottom));
+    z-index: 82;
+  }
+  .buddy-bubble {
+    width: min(100%, 430px);
+    max-width: none;
+    min-width: 0;
+    margin-left: 0;
+    padding: 9px 12px;
+    border-radius: 16px 16px 16px 5px;
+  }
+  .buddy-text {
+    min-height: 0;
+    max-height: 6.1em;
+    overflow: hidden;
+  }
+  .buddy-bot-wrap {
+    width: 58px;
+  }
+  .buddy-idle {
+    bottom: calc(36px + env(safe-area-inset-bottom));
+  }
+  .btn-nextday {
+    left: 58px;
+    right: 58px;
+    bottom: calc(48px + env(safe-area-inset-bottom));
+    transform: none;
+    width: auto;
+    padding: 10px 10px;
+    font-size: clamp(0.86rem, 4.2vw, 1rem);
+    white-space: normal;
+    line-height: 1.15;
+    border-radius: 18px;
+  }
+  @keyframes nextDayBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+  .demo-toggle {
+    right: 10px;
+    bottom: calc(42px + env(safe-area-inset-bottom));
+    z-index: 92;
+  }
+  .demo-panel {
+    left: 10px;
+    right: 10px;
+    bottom: calc(88px + env(safe-area-inset-bottom));
+    width: auto;
+  }
+  .modal {
+    width: min(94vw, 560px);
+    max-height: calc(100dvh - 24px);
+  }
+  .shop-grid {
+    grid-template-columns: 1fr;
+  }
+  .shop-head {
+    gap: 10px;
+  }
+  .shop-head h2 {
+    font-size: 1.2rem;
+  }
+  .attribution {
+    display: none;
+  }
+}
+
+@media (max-width: 430px) {
+  .topbar {
+    left: 6px;
+    right: 6px;
+    padding: 6px 8px;
+  }
+  .avatar {
+    width: 32px;
+    height: 32px;
+  }
+  .player-name {
+    font-size: 0.8rem;
+  }
+  .player-level-row {
+    gap: 4px;
+  }
+  .xp-bar {
+    width: 50px;
+  }
+  .topbar-right {
+    grid-template-columns: 1fr 1fr 34px 1.08fr;
+    gap: 5px;
+  }
+  .chip {
+    min-height: 30px;
+    font-size: 0.68rem;
+  }
+  .btn-shop {
+    min-height: 30px;
+    font-size: 0.72rem;
+  }
+  .right-rail {
+    left: 6px;
+    right: 6px;
+    top: 104px;
+  }
+  .monitor-body {
+    grid-template-columns: 44px 1fr;
+  }
+  .radar {
+    width: 44px;
+    height: 44px;
+  }
+  .mrow {
+    font-size: 0.62rem;
+  }
+  .monitor-status {
+    font-size: 0.68rem;
+  }
+  .monitor-src {
+    display: none;
+  }
+  .btn-mini {
+    margin-left: auto;
+  }
+  .buddy {
+    bottom: calc(100px + env(safe-area-inset-bottom));
+  }
+  .buddy-bubble {
+    padding: 8px 10px;
+  }
+  .buddy-text {
+    font-size: 0.78rem;
+    line-height: 1.34;
+  }
+  .btn-nextday {
+    left: 50px;
+    right: 50px;
+    bottom: calc(46px + env(safe-area-inset-bottom));
+    min-height: 52px;
+  }
+}
+
+@media (max-height: 480px) and (max-width: 950px) {
+  .topbar {
+    display: flex;
+    align-items: center;
+  }
+  .topbar-right {
+    width: auto;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .right-rail {
+    left: auto;
+    width: min(250px, 38vw);
+    top: 58px;
+    transform: none;
+  }
+  .daily-card {
+    display: none;
+  }
+  .monitor {
+    max-height: calc(100vh - 72px);
+    overflow: hidden;
+  }
+  .radar {
+    display: none;
+  }
+  .buddy {
+    bottom: calc(68px + env(safe-area-inset-bottom));
+  }
+  .buddy-bubble {
+    max-width: min(320px, 56vw);
+  }
+  .btn-nextday {
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    width: min(360px, 48vw);
+  }
+}

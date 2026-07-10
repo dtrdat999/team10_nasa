@@ -1019,3 +1019,53 @@
     width: 62px;
   }
 }
+
+/* ===== responsive scene pass ===== */
+@media (max-width: 900px) {
+  .farm-area {
+    bottom: 34px;
+  }
+}
+
+@media (max-width: 760px) {
+  .farm-area {
+    transform: translateX(-50%) scale(0.54);
+    bottom: 62px;
+  }
+  .sun {
+    top: 134px;
+    left: 18px;
+    scale: 0.72;
+  }
+}
+
+@media (max-width: 640px) {
+  .farm-area {
+    transform: translateX(-50%) scale(0.44);
+    bottom: 54px;
+  }
+  .prop-tree1,
+  .prop-tree2,
+  .prop-tree3 {
+    opacity: 0.78;
+  }
+}
+
+@media (max-width: 430px) {
+  .farm-area {
+    transform: translateX(-50%) scale(0.4);
+    bottom: 44px;
+  }
+  .sun {
+    top: 130px;
+    left: 4px;
+    scale: 0.58;
+  }
+}
+
+@media (max-height: 480px) and (max-width: 950px) {
+  .farm-area {
+    transform: translateX(-50%) scale(0.46);
+    bottom: 0;
+  }
+}
